@@ -7,26 +7,29 @@ This repository contains a parametric OpenSCAD model for a large planter shell t
 - is split into printable modules for smaller printers,
 - uses reinforcement ribs for improved load handling when filled with soil.
 
-## File
-- `planter_shell_modular.scad`
+## Files
+- `planter_support_free.scad` - master parametric model and assembly preview.
+- `parts/*.scad` - separate ready-to-export OpenSCAD file for each distinct printable element.
+- `parts/README.md` - print orientation and suggested quantities.
 
 ## Generate parts
-Use OpenSCAD and set:
+Open any file in `parts/` and export it directly as STL. Each file names one printable element, for example:
 
-- `part = "piece"`
-- `split_x`, `split_y` for total piece count
-- `piece_ix`, `piece_iy` to export each piece
-
-For example, with `split_x=2`, `split_y=2`, export 4 pieces:
-
-1. `(piece_ix, piece_iy) = (0,0)`
-2. `(piece_ix, piece_iy) = (1,0)`
-3. `(piece_ix, piece_iy) = (0,1)`
-4. `(piece_ix, piece_iy) = (1,1)`
+- `parts/wall_outer_tile_plain.scad`
+- `parts/wall_outer_tile_ported.scad`
+- `parts/wall_inner_liner_tile.scad`
+- `parts/wall_spacer_ladder.scad`
+- `parts/bottom_outer_tile.scad`
+- `parts/bottom_inner_liner_tile.scad`
+- `parts/bottom_spacer_ladder.scad`
+- `parts/corner_post.scad`
+- `parts/rim_rail_x.scad`
+- `parts/rim_rail_y.scad`
+- `parts/seam_key.scad`
 
 ## Strength notes
-- Increase `liner_wall_t`, `outer_wall_t`, and `rib_t` for heavier soil loads.
-- Increase `rib_count_per_side` for additional stiffness.
+- Increase `skin_t`, `liner_t`, `bottom_skin_t`, or `bottom_liner_t` for heavier soil loads.
+- Reduce `spacer_pitch` or increase `rib_w` / `spacer_w` for additional stiffness.
 - Consider adhesive + mechanical fasteners at seams for final assembly.
 
 ## Foam fill
